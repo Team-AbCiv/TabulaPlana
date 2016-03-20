@@ -1,0 +1,16 @@
+[
+{
+  "modid": "FlatWorldGenerator",
+  "name": "Custom FlatWorld Generator",
+  "description": "Just another attempt to make flat world generation more fast.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["3TUSK"],
+  "credits": "The Botania mod, for inspiring me to make this.",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
