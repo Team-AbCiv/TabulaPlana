@@ -12,6 +12,7 @@ public class WorldTypeCustomFlat extends WorldType {
 	private double horizon = 63.0D;
 	private float cloudHeight = 128.0F;
 
+	//Unsafe on generatorCode. Need to workaround
 	public WorldTypeCustomFlat(String customname, String generator, boolean structure) {
 		super("CustomFlatWorld" + customname);
 		this.generator = generator;
