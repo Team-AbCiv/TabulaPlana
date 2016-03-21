@@ -1,6 +1,6 @@
 [
 {
-  "modid": "FlatWorldGenerator",
+  "modid": "CustomFlatWorldGeneator",
   "name": "Custom FlatWorld Generator",
   "description": "Just another attempt to make flat world generation more fast.",
   "version": "${version}",

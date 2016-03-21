@@ -17,7 +17,7 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.0"
+version = "R1.0"
 group= "info.tritusk.flatworldgenerator" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "FlatWorldGenerator"
 

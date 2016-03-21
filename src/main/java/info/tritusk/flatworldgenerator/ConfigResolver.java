@@ -27,10 +27,15 @@ public final class ConfigResolver {
 	public static void initMainConfig(File file) {
 		Configuration config = new Configuration(file);
 		
+		config.load();
+		
 		useGlobalSettings = config.getBoolean("useGlobalSettings", "Main", false, "Use unified, global settings to replace all world-specified settings.");
 		
 		globalHorizon = config.get("GlobalSettings", "globalHorizon", 63).getInt();
 		globalCloudHeight = config.get("GlobalSettings", "globalCloudHeight", 255).getInt();
+		
+		if (config.hasChanged())
+			config.save();
 	}
 	
 	
@@ -52,10 +57,11 @@ public final class ConfigResolver {
 
 	public static void loadCustomFlatWorldConfig(File configFlatWorld) {
 		try {
+			System.out.println(configFlatWorld.getAbsolutePath());
 			InputStream data = new FileInputStream(configFlatWorld);
 			Document dataParsed = reader.parse(data);
 			dataParsed.normalize();		
-			NodeList main = dataParsed.getDocumentElement().getChildNodes();
+			NodeList main = dataParsed.getElementsByTagName("CustomFlatWorldInfo").item(0).getChildNodes();
 			
 			String name = "DummyWorld" + count;
 			String generatorCode = "1:7";
@@ -82,10 +88,17 @@ public final class ConfigResolver {
 					horizon = Double.valueOf(node.getTextContent());
 			}
 			
+			if (name.length() > 12)
+				name = name.substring(0, 12);
+			//There is no other way to approach this though.
+			//WorldType requires that name of a new WorldType is shorter than 16, 
+			//and I have used 4 of them
+			
 			new WorldTypeCustomFlat(name, generatorCode, enableStructure).setCloudHeight(cloudHeight).setHorizon(horizon);		
 			++count;
+			CustomFlatWorldGenerator.log.info("Successfully loaded custom flat world type: " + name);
 		} catch (Exception e) {
-			
+			e.printStackTrace();
 		}
 	}
 
