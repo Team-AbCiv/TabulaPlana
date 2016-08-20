@@ -1,8 +1,8 @@
 [
 {
-  "modid": "CustomFlatWorldGeneator",
-  "name": "Custom FlatWorld Generator",
-  "description": "Just another attempt to make flat world generation more fast.",
+  "modid": "tabulaplana",
+  "name": "tabulaplana",
+  "description": "Just another attempt to make flat world generation more easier.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
