@@ -31,7 +31,7 @@ public class TabulaPlana {
 		config.load();
 		
 		enableStructure = config.get("GlobalSettings", "enableStructure", true).getBoolean();
-		genCode = config.get("GlobalSettings", "genCode", "").getString();
+		genCode = config.get("GlobalSettings", "genCode", "3;minecraft:air;127;decoration").getString();
 		globalHorizon = config.get("GlobalSettings", "globalHorizon", 63).getInt();
 		globalCloudHeight = config.get("GlobalSettings", "globalCloudHeight", 255).getInt();
 		
