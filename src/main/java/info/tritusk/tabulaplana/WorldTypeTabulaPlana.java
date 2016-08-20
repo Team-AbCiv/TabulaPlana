@@ -1,7 +1,5 @@
 package info.tritusk.tabulaplana;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.chunk.IChunkProvider;
@@ -45,20 +43,5 @@ public class WorldTypeTabulaPlana extends WorldType {
 	public IChunkProvider getChunkGenerator(World world, String generatorOptions) {
 		return new ChunkProviderFlat(world, world.getSeed(), this.structure, this.generator);
 	}
-	
-	@SideOnly(Side.CLIENT)
-	public String getTranslateName() {
-		if (this.getWorldTypeName().startsWith("DummyWorld"))
-			return "generator.DummyWorld";
-		else return super.getTranslateName();
-	}
-	
-	@SideOnly(Side.CLIENT)
-	public String func_151359_c() {
-		if (this.getWorldTypeName().startsWith("DummyWorld"))
-			return "generator.DummyWorld.info";
-		else return super.func_151359_c();
-	}
-		
 
 }
