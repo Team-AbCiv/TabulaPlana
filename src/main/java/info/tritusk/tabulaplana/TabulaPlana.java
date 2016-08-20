@@ -3,15 +3,13 @@ package info.tritusk.tabulaplana;
 import org.apache.logging.log4j.Logger;
 
 import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.common.config.Configuration;
 
 @Mod(modid = "tabulaplana", name = "Tabula Plana", version = "R1.0", useMetadata = true)
 public class TabulaPlana {
 
-	@Instance("tabulaplana")
+	@Mod.Instance("tabulaplana")
 	public static TabulaPlana ins;
 	
 	public static Logger log;
@@ -23,7 +21,7 @@ public class TabulaPlana {
 	public static int globalHorizon;
 	public static int globalCloudHeight;
 	
-	@EventHandler
+	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		ins = this;
 		log = event.getModLog();
