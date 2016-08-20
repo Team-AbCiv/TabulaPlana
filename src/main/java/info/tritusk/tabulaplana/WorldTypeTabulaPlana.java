@@ -1,4 +1,4 @@
-package info.tritusk.flatworldgenerator;
+package info.tritusk.tabulaplana;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -7,7 +7,7 @@ import net.minecraft.world.WorldType;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.ChunkProviderFlat;
 
-public class WorldTypeCustomFlat extends WorldType {
+public class WorldTypeTabulaPlana extends WorldType {
 	
 	private final String generator;
 	private final boolean structure;
@@ -15,18 +15,18 @@ public class WorldTypeCustomFlat extends WorldType {
 	private float cloudHeight = 128.0F;
 
 	//Unsafe on generatorCode. Need to workaround
-	public WorldTypeCustomFlat(String customname, String generator, boolean structure) {
-		super("CuFW" + customname);
+	public WorldTypeTabulaPlana(String generator, boolean structure) {
+		super("tabula_plana");
 		this.generator = generator;
 		this.structure = structure;
 	}
 	
-	public WorldTypeCustomFlat setCloudHeight(float newHeight) {
+	public WorldTypeTabulaPlana setCloudHeight(float newHeight) {
 		this.cloudHeight = newHeight;
 		return this;
 	}
 	
-	public WorldTypeCustomFlat setHorizon(double newHorizon) {
+	public WorldTypeTabulaPlana setHorizon(double newHorizon) {
 		this.horizon = newHorizon;
 		return this;
 	}
