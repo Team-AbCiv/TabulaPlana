@@ -2,8 +2,8 @@ package info.tritusk.tabulaplana;
 
 import org.apache.logging.log4j.Logger;
 
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.common.config.Configuration;
 
 @Mod(modid = "tabulaplana", name = "Tabula Plana", version = "R1.0", useMetadata = true)
