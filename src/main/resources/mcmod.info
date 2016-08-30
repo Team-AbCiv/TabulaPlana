@@ -1,7 +1,7 @@
 [
 {
   "modid": "tabulaplana",
-  "name": "tabulaplana",
+  "name": "Tabula Plana",
   "description": "Just another attempt to make flat world generation more easier.",
   "version": "${version}",
   "mcversion": "${mcversion}",
