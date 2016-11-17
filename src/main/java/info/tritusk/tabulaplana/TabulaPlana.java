@@ -2,7 +2,7 @@ package info.tritusk.tabulaplana;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.config.Config;
 
 @Mod(modid = "tabulaplana", name = "Tabula Plana", version = "R1.0", useMetadata = true)
 public class TabulaPlana {
@@ -10,25 +10,23 @@ public class TabulaPlana {
 	@Mod.Instance("tabulaplana")
 	public static TabulaPlana ins;
 	
-	public static boolean enableStructure;
-	public static String genCode;
-	public static int heightHorizon, heightCloud;
+	@Config(modid = "tabulaplana", name = "TabulaPlana")
+	public static class Cfg {
+		@Config.Comment("Set to true to enable structure, e.g. village, dungeon.")
+		public static boolean enableStructure = true;
+		@Config.Comment("Superflat customization code.")
+		public static String genCode = "3;minecraft:bedrock,2*minecraft:dirt,minecraft:grass;1;village";
+		@Config.Comment("Height of horizon")
+		@Config.RangeInt(min = 0, max = 255)
+		public static int heightHorizon = 63;
+		@Config.Comment("Height of cloud")
+		@Config.RangeInt(min = 0, max = 255)
+		public static int heightCloud = 128;
+	}
 	
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		final Configuration config = new Configuration(event.getSuggestedConfigurationFile());
-		
-		config.load();
-		
-		enableStructure = config.get("GlobalSettings", "enableStructure", true).getBoolean();
-		genCode = config.get("GlobalSettings", "genCode", "3;minecraft:air;127;decoration").getString();
-		heightHorizon = config.get("GlobalSettings", "globalHorizon", 63).getInt();
-		heightCloud = config.get("GlobalSettings", "globalCloudHeight", 255).getInt();
-		
-		new WorldTypeTabulaPlana(genCode, enableStructure).setCloudHeight(heightCloud).setHorizon(heightHorizon);
+		new WorldTypeTabulaPlana(Cfg.genCode, Cfg.enableStructure).setCloudHeight(Cfg.heightCloud).setHorizon(Cfg.heightHorizon);
 		event.getModLog().trace("Tabula Plana has successfully loaded.");
-		
-		if (config.hasChanged())
-			config.save();
 	}
 }
