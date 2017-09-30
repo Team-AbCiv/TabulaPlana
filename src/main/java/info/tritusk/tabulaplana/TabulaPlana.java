@@ -5,14 +5,15 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.common.config.Config;
 
 @Mod(modid = "tabulaplana", name = "Tabula Plana", version = "@VER@", useMetadata = true)
-public enum TabulaPlana {
+public final class TabulaPlana {
 
-	INSTANCE;
+	private static final TabulaPlana INSTANCE = new TabulaPlana();
 
 	@Mod.InstanceFactory
 	public static TabulaPlana getInstance() {
 		return INSTANCE;
 	}
+
 	@Config(modid = "tabulaplana", name = "TabulaPlana")
 	public static class Cfg {
 		@Config.Comment("Set to true to enable structure, e.g. village, dungeon.")
@@ -30,6 +31,8 @@ public enum TabulaPlana {
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		new WorldTypeTabulaPlana(Cfg.genCode, Cfg.enableStructure).setCloudHeight(Cfg.heightCloud).setHorizon(Cfg.heightHorizon);
-		event.getModLog().trace("Tabula Plana has successfully loaded.");
+		if (Boolean.parseBoolean(System.getProperty("tabulaplana.debug"))) {
+			event.getModLog().trace("Tabula Plana has successfully loaded.");
+		}
 	}
 }

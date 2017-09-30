@@ -2,8 +2,8 @@ package info.tritusk.tabulaplana;
 
 import net.minecraft.world.World;
 import net.minecraft.world.WorldType;
-import net.minecraft.world.chunk.IChunkGenerator;
-import net.minecraft.world.gen.ChunkProviderFlat;
+import net.minecraft.world.gen.IChunkGenerator;
+import net.minecraft.world.gen.ChunkGeneratorFlat;
 
 public class WorldTypeTabulaPlana extends WorldType {
 	
@@ -12,18 +12,18 @@ public class WorldTypeTabulaPlana extends WorldType {
 	private double horizon = 63.0D;
 	private float cloudHeight = 128.0F;
 
-	public WorldTypeTabulaPlana(String generator, boolean structure) {
+	WorldTypeTabulaPlana(String generator, boolean structure) {
 		super("tabula_plana");
 		this.generator = generator;
 		this.structure = structure;
 	}
 	
-	public WorldTypeTabulaPlana setCloudHeight(float newHeight) {
+	WorldTypeTabulaPlana setCloudHeight(float newHeight) {
 		this.cloudHeight = newHeight;
 		return this;
 	}
 	
-	public WorldTypeTabulaPlana setHorizon(double newHorizon) {
+	WorldTypeTabulaPlana setHorizon(double newHorizon) {
 		this.horizon = newHorizon;
 		return this;
 	}
@@ -40,7 +40,7 @@ public class WorldTypeTabulaPlana extends WorldType {
 	
 	@Override
 	public IChunkGenerator getChunkGenerator(World world, String generatorOptions) {
-		return new ChunkProviderFlat(world, world.getSeed(), this.structure, this.generator);
+		return new ChunkGeneratorFlat(world, world.getSeed(), this.structure, this.generator);
 	}
 
 }
