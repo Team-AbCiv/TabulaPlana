@@ -4,12 +4,15 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.common.config.Config;
 
-@Mod(modid = "tabulaplana", name = "Tabula Plana", version = "R1.0", useMetadata = true)
-public class TabulaPlana {
+@Mod(modid = "tabulaplana", name = "Tabula Plana", version = "@VER@", useMetadata = true)
+public enum TabulaPlana {
 
-	@Mod.Instance("tabulaplana")
-	public static TabulaPlana ins;
-	
+	INSTANCE;
+
+	@Mod.InstanceFactory
+	public static TabulaPlana getInstance() {
+		return INSTANCE;
+	}
 	@Config(modid = "tabulaplana", name = "TabulaPlana")
 	public static class Cfg {
 		@Config.Comment("Set to true to enable structure, e.g. village, dungeon.")
@@ -23,7 +26,7 @@ public class TabulaPlana {
 		@Config.RangeInt(min = 0, max = 255)
 		public static int heightCloud = 128;
 	}
-	
+
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		new WorldTypeTabulaPlana(Cfg.genCode, Cfg.enableStructure).setCloudHeight(Cfg.heightCloud).setHorizon(Cfg.heightHorizon);
