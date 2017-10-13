@@ -2,10 +2,11 @@ package info.tritusk.tabulaplana;
 
 import net.minecraft.world.World;
 import net.minecraft.world.WorldType;
+import net.minecraft.world.biome.BiomeProvider;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.ChunkGeneratorFlat;
 
-public class WorldTypeTabulaPlana extends WorldType {
+public final class WorldTypeTabulaPlana extends WorldType {
 	
 	private final String generator;
 	private final boolean structure;
@@ -37,7 +38,12 @@ public class WorldTypeTabulaPlana extends WorldType {
 	public double getHorizon(World world) {
 		return this.horizon;
 	}
-	
+
+	@Override
+	public BiomeProvider getBiomeProvider(World world) {
+		return new BiomeProvider(world.getWorldInfo());
+	}
+
 	@Override
 	public IChunkGenerator getChunkGenerator(World world, String generatorOptions) {
 		return new ChunkGeneratorFlat(world, world.getSeed(), this.structure, this.generator);
