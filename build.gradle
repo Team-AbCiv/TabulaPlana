@@ -17,10 +17,10 @@ group = "info.tritusk.tabulaplana"
 archivesBaseName = "TabulaPlana"
 
 minecraft {
-    version = "1.12.2-14.23.0.2501"
+    version = "1.12.2-14.23.5.2772"
     runDir = "run"
     
-    mappings = "snapshot_20171003"
+    mappings = "stable_39"
     
     replace "@VER@", project.version
 }
