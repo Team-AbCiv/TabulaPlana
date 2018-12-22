@@ -1,13 +1,11 @@
 package info.tritusk.tabulaplana;
 
-import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.common.config.Config;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -41,29 +39,6 @@ public final class TabulaPlana {
 		}
 	}
 
-	@Mod.EventHandler
-	public void serverStarting(FMLServerStartingEvent event) {
-		World world = event.getServer().getWorld(0);
-		BlockPos spawnPoint = world.getSpawnPoint();
-		BlockPos.MutableBlockPos posPtr = new BlockPos.MutableBlockPos();
-		final int shelterY = TabulaPlana.Cfg.shelterY;
-		final int shelterYRoof = shelterY + 6;
-		for (int x = -4; x < 5; x++) {
-			for (int z = -4; z < 5; z++) {
-				posPtr.setPos(spawnPoint.getX() + x, shelterY, spawnPoint.getZ() + z);
-				world.setBlockState(posPtr, Blocks.COBBLESTONE.getDefaultState(), 22);
-				final int height = shelterYRoof - shelterY;
-				for (int yOffset = 1; yOffset < height; yOffset++) {
-					posPtr.setY(shelterY + yOffset);
-					world.setBlockState(posPtr, Blocks.AIR.getDefaultState(), 22);
-				}
-				posPtr.setY(shelterYRoof);
-				world.setBlockState(posPtr, Blocks.COBBLESTONE.getDefaultState(), 22);
-			}
-		}
-		world.setBlockState(spawnPoint, Blocks.TORCH.getDefaultState());
-	}
-
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public static void handleWorldInitializing(WorldEvent.CreateSpawnPosition event) {
 		World world = event.getWorld();
@@ -71,6 +46,10 @@ public final class TabulaPlana {
 			event.setCanceled(true);
 			BlockPos spawnPoint = new BlockPos(world.rand.nextInt(256), Cfg.shelterY + 1, world.rand.nextInt(256));
 			event.getWorld().setSpawnPoint(spawnPoint);
+			// TODO Generate shelter
+			if (event.getSettings().isBonusChestEnabled()) {
+				// TODO Respect bonus chest setting
+			}
 		}
 	}
 
