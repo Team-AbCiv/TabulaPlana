@@ -1,6 +1,8 @@
 package info.tritusk.tabulaplana;
 
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.BiomeProvider;
 import net.minecraft.world.gen.IChunkGenerator;
@@ -49,4 +51,8 @@ public final class WorldTypeTabulaPlana extends WorldType {
 		return new ChunkGeneratorFlat(world, world.getSeed(), this.structure, this.generator);
 	}
 
+	@Override
+	public int getSpawnFuzz(WorldServer world, MinecraftServer server) {
+		return 0;
+	}
 }
