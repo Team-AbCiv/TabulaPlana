@@ -11,12 +11,10 @@ import net.minecraft.world.gen.ChunkGeneratorFlat;
 public final class WorldTypeTabulaPlana extends WorldType {
 	
 	private final String generator;
-	private final boolean structure;
 
-	WorldTypeTabulaPlana(String generator, boolean structure) {
+	WorldTypeTabulaPlana(String generator) {
 		super("tabula_plana");
 		this.generator = generator;
-		this.structure = structure;
 	}
 	
 	@Override
@@ -36,7 +34,7 @@ public final class WorldTypeTabulaPlana extends WorldType {
 
 	@Override
 	public IChunkGenerator getChunkGenerator(World world, String generatorOptions) {
-		return new ChunkGeneratorFlat(world, world.getSeed(), this.structure, this.generator);
+		return new ChunkGeneratorFlat(world, world.getSeed(), world.getWorldInfo().isMapFeaturesEnabled(), this.generator);
 	}
 
 	@Override

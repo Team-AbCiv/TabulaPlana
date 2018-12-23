@@ -19,9 +19,6 @@ public final class TabulaPlana {
 
 	static final String MOD_ID = "tabula_plana";
 
-	@Config.Comment("Set to true to enable structure, e.g. village, dungeon.")
-	@Config.RequiresMcRestart
-	public static boolean enableStructure = true;
 	@Config.Comment("Superflat customization code.")
 	@Config.RequiresMcRestart
 	public static String genCode = "3;minecraft:bedrock,2*minecraft:dirt,minecraft:grass;1;village";
@@ -39,7 +36,7 @@ public final class TabulaPlana {
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		new WorldTypeTabulaPlana(TabulaPlana.genCode, TabulaPlana.enableStructure);
+		new WorldTypeTabulaPlana(TabulaPlana.genCode);
 		if (Boolean.parseBoolean(System.getProperty("tabulaplana.debug"))) {
 			event.getModLog().trace("Tabula Plana has successfully loaded.");
 		}
