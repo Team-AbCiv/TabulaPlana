@@ -8,6 +8,10 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 import java.util.Random;
 
+/**
+ * A generator that can generate a 9x9 hollow shelter made of cobblestones
+ * (i.e. "dire-box").
+ */
 final class WorldGenDireBox extends WorldGenerator {
     @Override
     public boolean generate(World world, Random rand, BlockPos pos) {

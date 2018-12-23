@@ -11,6 +11,11 @@ import net.minecraft.world.storage.loot.LootTableList;
 
 import java.util.Random;
 
+/**
+ * A generator that can generate bonus chest and four torches if enabled.
+ * This does not perform much sanity check - it will overlap existed contents
+ * at target place.
+ */
 final class WorldGenBonusChestLike extends WorldGenerator {
     @Override
     public boolean generate(World world, Random rand, BlockPos center) {
