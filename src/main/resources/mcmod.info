@@ -7,10 +7,9 @@
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["3TUSK"],
+  "authorList": [ "3TUSK" ],
   "credits": "The Botania mod, for inspiring me to make this.",
   "logoFile": "",
-  "screenshots": [],
-  "dependencies": []
+  "screenshots": []
 }
 ]

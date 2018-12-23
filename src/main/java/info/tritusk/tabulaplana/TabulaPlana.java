@@ -37,9 +37,6 @@ public final class TabulaPlana {
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		new WorldTypeTabulaPlana(TabulaPlana.genCode);
-		if (Boolean.parseBoolean(System.getProperty("tabulaplana.debug"))) {
-			event.getModLog().trace("Tabula Plana has successfully loaded.");
-		}
 	}
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
