@@ -36,7 +36,7 @@ public final class TabulaPlana {
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		new WorldTypeTabulaPlana(TabulaPlana.genCode);
+		new WorldTypeTabulaPlana();
 	}
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
