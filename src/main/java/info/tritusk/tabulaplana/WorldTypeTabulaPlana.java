@@ -12,8 +12,6 @@ public final class WorldTypeTabulaPlana extends WorldType {
 	
 	private final String generator;
 	private final boolean structure;
-	private double horizon = 63.0D;
-	private float cloudHeight = 128.0F;
 
 	WorldTypeTabulaPlana(String generator, boolean structure) {
 		super("tabula_plana");
@@ -21,24 +19,14 @@ public final class WorldTypeTabulaPlana extends WorldType {
 		this.structure = structure;
 	}
 	
-	WorldTypeTabulaPlana setCloudHeight(float newHeight) {
-		this.cloudHeight = newHeight;
-		return this;
-	}
-	
-	WorldTypeTabulaPlana setHorizon(double newHorizon) {
-		this.horizon = newHorizon;
-		return this;
-	}
-	
 	@Override
 	public float getCloudHeight() {
-		return this.cloudHeight;
+		return (float) TabulaPlana.heightCloud;
 	}
 
 	@Override
 	public double getHorizon(World world) {
-		return this.horizon;
+		return TabulaPlana.heightHorizon;
 	}
 
 	@Override
