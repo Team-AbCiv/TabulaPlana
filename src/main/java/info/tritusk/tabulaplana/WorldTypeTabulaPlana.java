@@ -13,7 +13,7 @@ public final class WorldTypeTabulaPlana extends WorldType {
 	private final String generator;
 
 	WorldTypeTabulaPlana(String generator) {
-		super("tabula_plana");
+		super(TabulaPlana.MOD_ID);
 		this.generator = generator;
 	}
 	
